@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'src/frontend/screens/login_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -33,9 +35,21 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text("Assivito"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text("Assivito"),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(LoginScreen(), transition: Transition.fadeIn);
+              },
+              child: const Text("Login"),
+            )
+          ],
+        ),
       ),
     );
   }
