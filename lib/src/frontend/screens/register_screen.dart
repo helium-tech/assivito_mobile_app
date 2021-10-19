@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatelessWidget {
+  RegisterScreen({Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
 
@@ -51,10 +51,40 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 0),
                       child: TextFormField(
                         decoration: const InputDecoration(
-                          hintText: 'Email ou n° de téléphone',
+                          hintText: 'Nom de votre restaurant',
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 0.0, horizontal: 0.0),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: 0),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                          hintText: 'Votre prénom',
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 0.0, horizontal: 0.0),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: 0),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                          hintText: 'Votre n° de téléphone',
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 0.0, horizontal: 0.0),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: 0),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                          hintText: 'Votre email',
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 0.0, horizontal: 0.0),
                         ),
@@ -64,22 +94,22 @@ class LoginScreen extends StatelessWidget {
                       decoration: const InputDecoration(
                         hintText: 'Mot de passe',
                         suffixIcon: Icon(
-                          Icons.euro_symbol,
+                          Icons.lock,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        hintText: 'Confirmez le mot de passe',
+                        suffixIcon: Icon(
+                          Icons.lock,
                           size: 20,
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        Text(
-                          "Mot de passe oublié ?",
-                          style: TextStyle(color: Colors.red),
-                        ),
-                      ],
                     ),
                     const SizedBox(
                       height: 20,
@@ -92,7 +122,7 @@ class LoginScreen extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 0),
                         child: const Text(
-                          "SE CONNECTER",
+                          "S'INSCRIRE",
                           style: TextStyle(color: Colors.black, fontSize: 18),
                         ),
                       ),
@@ -104,9 +134,9 @@ class LoginScreen extends StatelessWidget {
                       text: const TextSpan(
                         style: TextStyle(color: Colors.black),
                         children: [
-                          TextSpan(text: "Nouveau sur Assivito ?"),
+                          TextSpan(text: "Vous avez déja un compte ?"),
                           TextSpan(
-                              text: " S'inscrire..",
+                              text: " Connectez vous.",
                               style: TextStyle(color: Colors.red))
                         ],
                       ),

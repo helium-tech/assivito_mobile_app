@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'src/frontend/screens/login_screen.dart';
+import 'src/frontend/screens/register_screen.dart';
+import 'src/frontend/screens/home_screen.dart';
+import 'src/frontend/screens/confirm_phone_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,7 +50,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 Get.to(LoginScreen(), transition: Transition.fadeIn);
               },
               child: const Text("Login"),
-            )
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(RegisterScreen(), transition: Transition.fadeIn);
+              },
+              child: const Text("Register"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(const HomeScreen(), transition: Transition.fadeIn);
+              },
+              child: const Text("Home"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(const ConfirmPhoneScreen(),
+                    transition: Transition.fadeIn);
+              },
+              child: const Text("Confirm Phone"),
+            ),
           ],
         ),
       ),
