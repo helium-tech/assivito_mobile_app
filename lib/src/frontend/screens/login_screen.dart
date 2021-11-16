@@ -1,4 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
+
+import 'register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -64,7 +69,7 @@ class LoginScreen extends StatelessWidget {
                       decoration: const InputDecoration(
                         hintText: 'Mot de passe',
                         suffixIcon: Icon(
-                          Icons.euro_symbol,
+                          Icons.lock,
                           size: 20,
                         ),
                       ),
@@ -101,13 +106,18 @@ class LoginScreen extends StatelessWidget {
                       height: 20,
                     ),
                     RichText(
-                      text: const TextSpan(
-                        style: TextStyle(color: Colors.black),
+                      text: TextSpan(
+                        style: const TextStyle(color: Colors.black),
                         children: [
-                          TextSpan(text: "Nouveau sur Assivito ?"),
+                          const TextSpan(text: "Nouveau sur Assivito ?"),
                           TextSpan(
-                              text: " S'inscrire..",
-                              style: TextStyle(color: Colors.red))
+                            text: " S'inscrire..",
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Get.to(() => RegisterScreen());
+                              },
+                            style: const TextStyle(color: Colors.red),
+                          )
                         ],
                       ),
                     ),

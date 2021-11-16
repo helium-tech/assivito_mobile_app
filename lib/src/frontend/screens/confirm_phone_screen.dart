@@ -1,3 +1,4 @@
+import 'package:assivito/src/frontend/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -66,42 +67,8 @@ class ConfirmPhoneScreen extends StatelessWidget {
                   primary: const Color(0xFFFCBE6A),
                 ),
                 onPressed: () {
-                  Get.defaultDialog(
-                    title: "Votre code d'identification unique (CUI)",
-                    titleStyle: const TextStyle(fontSize: 17),
-                    content: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Column(
-                        children: [
-                          const Text(
-                            "Vous allez recevoir le CUI par mail/téléphone. Il vous permettra de se connecter et publier sur notre plateforme en tant que fournisseur de fruits et légumes ainsi que d’autres produits de restauration.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: const Color(0xFFFCBE6A),
-                            ),
-                            onPressed: () {},
-                            child: Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 0),
-                              child: const Text(
-                                "CONTINUER",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 18),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
+                  Get.offAll(() => const HomeScreen());
+                  // showValidatePhoneDialog();
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 0),
@@ -162,4 +129,41 @@ class ConfirmInputWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+Future showValidatePhoneDialog() {
+  return Get.defaultDialog(
+    title: "Votre code d'identification unique (CUI)",
+    titleStyle: const TextStyle(fontSize: 17),
+    content: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        children: [
+          const Text(
+            "Vous allez recevoir le CUI par mail/téléphone. Il vous permettra de se connecter et publier sur notre plateforme en tant que fournisseur de fruits et légumes ainsi que d’autres produits de restauration.",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 16,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: const Color(0xFFFCBE6A),
+            ),
+            onPressed: () {},
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 0),
+              child: const Text(
+                "CONTINUER",
+                style: TextStyle(color: Colors.black, fontSize: 18),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }

@@ -1,4 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'confirm_phone_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({Key? key}) : super(key: key);
@@ -118,7 +122,9 @@ class RegisterScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         primary: const Color(0xFFFCBE6A),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => const ConfirmPhoneScreen());
+                      },
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 0),
                         child: const Text(
@@ -131,13 +137,18 @@ class RegisterScreen extends StatelessWidget {
                       height: 20,
                     ),
                     RichText(
-                      text: const TextSpan(
-                        style: TextStyle(color: Colors.black),
+                      text: TextSpan(
+                        style: const TextStyle(color: Colors.black),
                         children: [
-                          TextSpan(text: "Vous avez déja un compte ?"),
+                          const TextSpan(text: "Vous avez déja un compte ?"),
                           TextSpan(
-                              text: " Connectez vous.",
-                              style: TextStyle(color: Colors.red))
+                            text: " Connectez vous.",
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Get.back();
+                              },
+                            style: const TextStyle(color: Colors.red),
+                          )
                         ],
                       ),
                     ),

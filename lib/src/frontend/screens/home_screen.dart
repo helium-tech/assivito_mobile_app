@@ -1,16 +1,35 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+import 'search_screen.dart';
+import 'favorite_screen.dart';
+import 'cart_screen.dart';
+import 'account_screen.dart';
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  final List<Widget> _pages = <Widget>[
+    const HomeViewWidget(),
+    const SearchScreen(),
+    const CartScreen(),
+    const FavoriteScreen(),
+    const AccountScreen(),
+  ];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: const Text("BIENVENUE DANS VOTRE MARCHE"),
-        centerTitle: true,
-      ),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           canvasColor: Colors.green,
@@ -20,6 +39,8 @@ class HomeScreen extends StatelessWidget {
               ),
         ),
         child: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
           type: BottomNavigationBarType.fixed,
           backgroundColor: const Color(0xFFF9FAFB),
           fixedColor: Colors.black,
@@ -46,6 +67,24 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      body: _pages.elementAt(_selectedIndex),
+    );
+  }
+}
+
+class HomeViewWidget extends StatelessWidget {
+  const HomeViewWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: const Text("BIENVENUE DANS VOTRE MARCHE"),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
