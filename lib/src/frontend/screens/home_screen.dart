@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'search_screen.dart';
 import 'favorite_screen.dart';
 import 'cart_screen.dart';
 import 'account_screen.dart';
+
+import '../themes/colors.dart';
+import '../widgets/custom_title_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -39,6 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
         ),
         child: BottomNavigationBar(
+          unselectedLabelStyle: const TextStyle(fontSize: 8),
+          selectedLabelStyle: const TextStyle(fontSize: 8),
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           type: BottomNavigationBarType.fixed,
@@ -96,21 +102,21 @@ class HomeViewWidget extends StatelessWidget {
               clipBehavior: Clip.hardEdge,
               children: [
                 Container(
-                  height: 400,
+                  height: 330,
                 ),
                 Container(
-                  color: const Color(0xFFFCBE6A),
-                  height: 300,
+                  color: AppColors.yellowColor,
+                  height: 265,
                 ),
                 Positioned(
                   top: 10,
                   left: 10,
-                  height: 75,
+                  height: 60,
                   width: MediaQuery.of(context).size.width - 20,
                   child: const SearchBar(),
                 ),
                 Positioned(
-                  top: 90,
+                  top: 80,
                   left: 10,
                   height: 75,
                   width: MediaQuery.of(context).size.width - 20,
@@ -120,9 +126,9 @@ class HomeViewWidget extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 175,
+                  top: 140,
                   left: 10,
-                  height: 220,
+                  height: 190,
                   width: MediaQuery.of(context).size.width - 10,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
@@ -141,7 +147,7 @@ class HomeViewWidget extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -151,10 +157,10 @@ class HomeViewWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 25,
+              height: 20,
             ),
             Container(
-              height: 110,
+              height: 90,
               padding: const EdgeInsets.only(left: 5),
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -172,7 +178,7 @@ class HomeViewWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 30,
+              height: 25,
             ),
             Container(
               color: const Color(0xFFEDEEEF),
@@ -190,10 +196,10 @@ class HomeViewWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 25,
                   ),
                   Container(
-                    height: 200,
+                    height: 225,
                     margin: const EdgeInsets.only(bottom: 10),
                     decoration: const BoxDecoration(color: Color(0xFFEDEEEF)),
                     padding: const EdgeInsets.only(left: 10),
@@ -233,8 +239,8 @@ class FournisseurCategoryWidget extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: 75,
-            width: 75,
+            height: 60,
+            width: 60,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(75),
               image: const DecorationImage(
@@ -250,7 +256,7 @@ class FournisseurCategoryWidget extends StatelessWidget {
             "Pizza",
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 18,
+              fontSize: 12,
             ),
           ),
         ],
@@ -273,7 +279,7 @@ class OfferWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 100,
+              height: 135,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: const DecorationImage(
@@ -288,15 +294,15 @@ class OfferWidget extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(left: 10),
               child: Text(
-                "Fruits et Légumes",
+                "Tomate grappe",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 15,
+                  fontSize: 12,
                 ),
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 5,
             ),
             const OfferListWithIcon(title: "18 offres"),
             const OfferListWithIcon(title: "àpd. 1500 XOF/kg"),
@@ -347,16 +353,16 @@ class OfferCategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(right: 10),
+      padding: const EdgeInsets.only(right: 15),
       child: Card(
         elevation: 5,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(10.0),
         ),
         child: Container(
           margin: const EdgeInsets.only(right: 0),
-          height: 200,
-          width: 300,
+          height: 180,
+          width: 230,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
           ),
@@ -364,9 +370,9 @@ class OfferCategoryWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 150,
+                height: 120,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(10),
                   image: const DecorationImage(
                     image: AssetImage("assets/images/img1.png"),
                     fit: BoxFit.cover,
@@ -377,12 +383,12 @@ class OfferCategoryWidget extends StatelessWidget {
                 height: 10,
               ),
               const Padding(
-                padding: EdgeInsets.only(left: 10),
+                padding: EdgeInsets.only(left: 15),
                 child: Text(
                   "Fruits et Légumes",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
                   ),
                 ),
               ),
@@ -390,11 +396,11 @@ class OfferCategoryWidget extends StatelessWidget {
                 height: 10,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10),
+                padding: const EdgeInsets.only(left: 15),
                 child: Row(
                   children: const [
                     Icon(
-                      Icons.ac_unit,
+                      Icons.outlined_flag,
                       size: 15,
                     ),
                     SizedBox(
@@ -404,6 +410,8 @@ class OfferCategoryWidget extends StatelessWidget {
                       "13 Offres",
                       style: TextStyle(
                         fontSize: 10,
+                        color: AppColors.black50,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],
@@ -412,57 +420,6 @@ class OfferCategoryWidget extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class CustomTitleWidget extends StatelessWidget {
-  const CustomTitleWidget({this.title, this.subtitle, Key? key})
-      : super(key: key);
-
-  final String? title;
-  final String? subtitle;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(top: 1),
-            height: 33,
-            width: 5,
-            color: Colors.black,
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                "$title",
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              const SizedBox(
-                height: 0,
-              ),
-              Text(
-                "$subtitle",
-                style: TextStyle(
-                  color: Colors.grey[600],
-                ),
-              ),
-            ],
-          )
-        ],
       ),
     );
   }
@@ -487,11 +444,15 @@ class SearchBar extends StatelessWidget {
             ),
             filled: true,
             fillColor: Colors.white,
-            hintText: 'Recherchez un produit ...',
+            hintText: 'Rechercher un produit ...',
+            hintStyle: const TextStyle(
+              fontSize: 12,
+              color: AppColors.black50,
+            ),
             suffixIcon: const Icon(
-              Icons.search,
-              size: 30,
-              color: Colors.black,
+              FontAwesomeIcons.search,
+              size: 18,
+              color: AppColors.black50,
             ),
           ),
         ),

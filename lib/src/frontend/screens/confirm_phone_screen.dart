@@ -22,13 +22,13 @@ class ConfirmPhoneScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 200,
+                height: 75,
               ),
               const Text(
                 "Finaliser votre inscription",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: 12,
                 ),
               ),
               const SizedBox(
@@ -39,7 +39,9 @@ class ConfirmPhoneScreen extends StatelessWidget {
                 child: Text(
                   "Renseigner ci-dessous le code à 6 caractères reçu sur votre téléphone ou par mail pour vérifier vos contacts",
                   textAlign: TextAlign.center,
-                  style: TextStyle(),
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -51,10 +53,15 @@ class ConfirmPhoneScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const <Widget>[
                     ConfirmInputWidget(),
+                    SizedBox(width: 5),
                     ConfirmInputWidget(),
+                    SizedBox(width: 5),
                     ConfirmInputWidget(),
+                    SizedBox(width: 5),
                     ConfirmInputWidget(),
+                    SizedBox(width: 5),
                     ConfirmInputWidget(),
+                    SizedBox(width: 5),
                     ConfirmInputWidget(),
                   ],
                 ),
@@ -65,6 +72,7 @@ class ConfirmPhoneScreen extends StatelessWidget {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: const Color(0xFFFCBE6A),
+                  elevation: 0,
                 ),
                 onPressed: () {
                   Get.offAll(() => const HomeScreen());
@@ -74,21 +82,28 @@ class ConfirmPhoneScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 0),
                   child: const Text(
                     "VALIDER",
-                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              RichText(
-                text: const TextSpan(
-                  style: TextStyle(color: Colors.black),
+              const Text.rich(
+                TextSpan(
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 12,
+                  ),
                   children: [
                     TextSpan(text: "Code pas reçu ?"),
                     TextSpan(
-                        text: "  Renvoyer le code",
-                        style: TextStyle(color: Colors.red))
+                      text: "  Renvoyer le code",
+                      style: TextStyle(color: Colors.red),
+                    )
                   ],
                 ),
               ),
@@ -112,15 +127,15 @@ class ConfirmInputWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
       child: Container(
-        height: 100,
-        width: 60,
+        height: 60,
+        width: 38,
         padding: const EdgeInsets.only(right: 5),
         child: TextField(
           maxLines: 3,
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.black, width: 1),
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(5.0),
             ),
             filled: true,
             fillColor: Colors.white,

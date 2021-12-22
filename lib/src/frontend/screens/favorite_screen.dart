@@ -1,5 +1,7 @@
 import 'package:assivito/src/frontend/screens/search_screen.dart';
+import 'package:assivito/src/frontend/themes/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({Key? key}) : super(key: key);
@@ -54,7 +56,7 @@ class FavoriteOfferWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
                   width: 1,
-                  color: Colors.black,
+                  color: Colors.grey,
                 ),
               ),
               child: Row(
@@ -75,12 +77,12 @@ class FavoriteOfferWidget extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 5),
+                      const SizedBox(height: 10),
                       const Text(
                         "Tomates grappe nouvel arrivage ",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 15,
+                          fontSize: 10,
                         ),
                       ),
                       const SizedBox(
@@ -93,7 +95,7 @@ class FavoriteOfferWidget extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.red,
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 10,
                             ),
                           ),
                           SizedBox(
@@ -103,7 +105,7 @@ class FavoriteOfferWidget extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 15,
+                        height: 25,
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width - 150,
@@ -145,7 +147,7 @@ class FavoriteOfferWidget extends StatelessWidget {
               ),
               child: const Center(
                 child: Icon(
-                  Icons.train_sharp,
+                  FontAwesomeIcons.trash,
                   size: 12,
                 ),
               ),
@@ -170,14 +172,17 @@ class FiveStarWidget extends StatelessWidget {
           Icon(
             Icons.star,
             size: starSize,
+            color: Colors.yellow,
           ),
           Icon(
             Icons.star,
             size: starSize,
+            color: Colors.yellow,
           ),
           Icon(
             Icons.star,
             size: starSize,
+            color: Colors.yellow,
           ),
           Icon(
             Icons.star_border,
