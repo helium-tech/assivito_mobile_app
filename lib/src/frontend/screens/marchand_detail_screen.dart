@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/custom_title_widget.dart';
+import '../widgets/star_list_widget.dart';
+import 'home_screen.dart';
 
-class AccountScreen extends StatefulWidget {
-  const AccountScreen({Key? key}) : super(key: key);
+class MerchantDetailScreen extends StatefulWidget {
+  const MerchantDetailScreen({Key? key}) : super(key: key);
 
   @override
-  State<AccountScreen> createState() => _AccountScreenState();
+  State<MerchantDetailScreen> createState() => _MerchantDetailScreenState();
 }
 
-class _AccountScreenState extends State<AccountScreen> {
+class _MerchantDetailScreenState extends State<MerchantDetailScreen> {
   var activeTab = "offer";
   setActiveBar(activaTabId) {
     setState(() {
@@ -35,18 +37,20 @@ class _AccountScreenState extends State<AccountScreen> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-              height: 255,
+              height: 180,
               width: width,
               color: Colors.black,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 40),
                   Container(
                     height: 90,
                     width: 90,
@@ -199,53 +203,67 @@ class _AccountScreenState extends State<AccountScreen> {
   }
 }
 
-class StarListWidget extends StatelessWidget {
-  const StarListWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: const [
-        Icon(
-          Icons.star,
-          size: 12,
-          color: Colors.orange,
-        ),
-        Icon(
-          Icons.star,
-          size: 12,
-          color: Colors.orange,
-        ),
-        Icon(
-          Icons.star,
-          size: 12,
-          color: Colors.orange,
-        ),
-        Icon(
-          Icons.star,
-          size: 12,
-          color: Colors.white,
-        ),
-        Icon(
-          Icons.star,
-          size: 12,
-          color: Colors.white,
-        ),
-      ],
-    );
-  }
-}
-
 class MarchandOffersWidget extends StatelessWidget {
   const MarchandOffersWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Offer"),
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 15.0),
+          child: CustomTitleWithoutSubWidget(
+            title: "Fruits et légumes",
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: 220,
+          padding: const EdgeInsets.only(left: 15),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: const [
+              OfferWidget(),
+              OfferWidget(),
+              OfferWidget(),
+              OfferWidget(),
+              OfferWidget(),
+              OfferWidget(),
+              OfferWidget(),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 15.0),
+          child: CustomTitleWithoutSubWidget(
+            title: "Autres produits",
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: 220,
+          padding: const EdgeInsets.only(left: 15),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: const [
+              OfferWidget(),
+              OfferWidget(),
+              OfferWidget(),
+              OfferWidget(),
+              OfferWidget(),
+              OfferWidget(),
+              OfferWidget(),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -491,15 +509,19 @@ class MarchandAvisWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(
+                    height: 15,
+                  ),
                   const CustomTitleWithoutSubWidget(title: "Laisser un avis"),
                   const SizedBox(
                     height: 15,
                   ),
                   TextFormField(
-                    minLines: 4,
-                    maxLines: 7,
+                    minLines: 6,
+                    maxLines: 10,
                     decoration: InputDecoration(
                       hintText: 'Ajouter votre message',
+                      contentPadding: const EdgeInsets.only(top: 5, left: 10),
                       hintStyle: const TextStyle(
                         fontSize: 10,
                         color: AppColors.black50,

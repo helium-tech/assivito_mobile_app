@@ -1,4 +1,5 @@
 import 'package:assivito/src/frontend/themes/colors.dart';
+import 'package:assivito/src/frontend/widgets/custom_title_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,52 +12,79 @@ class SearchScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: const Text("RECHERCHER"),
+        title: const Text(
+          "RECHERCHER",
+          style: TextStyle(
+            fontSize: 14,
+          ),
+        ),
       ),
       body: Column(
         children: [
           AnimatedContainer(
             duration: const Duration(milliseconds: 500),
-            height: 50,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              height: 230,
+              color: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Résultats pour "tomates"',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  const SearchFilterFormInputWidget(
+                    title: "Nom du produit",
+                    inputLabel: "Ex: boeuf, tomates",
                   ),
-                  InkWell(
-                    onTap: () {
-                      Get.bottomSheet(
-                        const SearchFilterBottomSheet(),
-                      );
-                    },
-                    child: Container(
-                      height: 20,
-                      width: 20,
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(2)),
-                      child: const Center(
-                        child: Icon(
-                          Icons.account_tree_rounded,
-                          color: Colors.white,
-                          size: 12,
+                  Row(
+                    children: const [
+                      SearchFilterFormInputWidget(
+                        title: 'Votre localisation',
+                        inputLabel: 'Ex: Adidogome',
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      SearchFilterFormInputWidget(
+                        title: 'Type de marché',
+                        inputLabel: 'Ex: Local / Importé',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    height: 40,
+                    width: MediaQuery.of(context).size.width - 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: AppColors.yellowColor,
+                    ),
+                    child: const Center(
+                      child: Text(
+                        "VALIDER",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
           ),
+          Container(
+            padding: const EdgeInsets.only(left: 15),
+            child: const CustomTitleWidget(
+              title: "OFFRES RECENTES",
+              subtitle: "Nos nouveautés sont par ici",
+            ),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
           SizedBox(
-            height: MediaQuery.of(context).size.height - 198,
+            height: 400 - 45,
             child: ListView(
               children: const [
                 SearchOfferWidget(),
@@ -136,11 +164,13 @@ class SearchFilterBottomSheet extends StatelessWidget {
 }
 
 class SearchFilterFormInputWidget extends StatelessWidget {
-  const SearchFilterFormInputWidget({this.title, this.inputLabel, Key? key})
+  const SearchFilterFormInputWidget(
+      {this.title, this.inputLabel, this.icon, Key? key})
       : super(key: key);
 
   final String? title;
   final String? inputLabel;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -152,8 +182,8 @@ class SearchFilterFormInputWidget extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(
-                left: 5,
-                bottom: 10,
+                left: 0,
+                bottom: 5,
               ),
               child: Text(
                 "$title",
@@ -163,13 +193,13 @@ class SearchFilterFormInputWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: 40,
               child: TextFormField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(5.0),
                     ),
                     filled: true,
                     fillColor: Colors.grey[300],
@@ -194,7 +224,7 @@ class SearchOfferWidget extends StatelessWidget {
       child: Card(
         elevation: 4,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(5),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -202,7 +232,7 @@ class SearchOfferWidget extends StatelessWidget {
             Container(
               height: 130,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(5),
                 image: const DecorationImage(
                   image: AssetImage("assets/images/img1.png"),
                   fit: BoxFit.cover,
@@ -270,7 +300,7 @@ class OfferListWithIcon extends StatelessWidget {
           Text(
             "$title",
             style: const TextStyle(
-              fontSize: 8,
+              fontSize: 10,
               color: AppColors.black50,
               fontWeight: FontWeight.w600,
             ),

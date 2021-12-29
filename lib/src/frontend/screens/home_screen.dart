@@ -199,7 +199,7 @@ class HomeViewWidget extends StatelessWidget {
                     height: 25,
                   ),
                   Container(
-                    height: 225,
+                    height: 235,
                     margin: const EdgeInsets.only(bottom: 10),
                     decoration: const BoxDecoration(color: Color(0xFFEDEEEF)),
                     padding: const EdgeInsets.only(left: 10),
@@ -296,7 +296,7 @@ class OfferWidget extends StatelessWidget {
               child: Text(
                 "Tomate grappe",
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   fontSize: 12,
                 ),
               ),
@@ -307,6 +307,9 @@ class OfferWidget extends StatelessWidget {
             const OfferListWithIcon(title: "18 offres"),
             const OfferListWithIcon(title: "àpd. 1500 XOF/kg"),
             const OfferListWithIcon(title: "10 fournisseurs"),
+            const SizedBox(
+              height: 15,
+            ),
           ],
         ),
       ),
@@ -339,6 +342,8 @@ class OfferListWithIcon extends StatelessWidget {
             "$title",
             style: const TextStyle(
               fontSize: 10,
+              fontWeight: FontWeight.w600,
+              color: AppColors.black50,
             ),
           ),
         ],

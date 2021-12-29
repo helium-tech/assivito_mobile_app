@@ -1,3 +1,4 @@
+import 'package:assivito/src/frontend/themes/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTitleWidget extends StatelessWidget {
@@ -30,7 +31,7 @@ class CustomTitleWidget extends StatelessWidget {
               Text(
                 "$title",
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   fontSize: 12,
                 ),
               ),
@@ -39,7 +40,11 @@ class CustomTitleWidget extends StatelessWidget {
               ),
               Text(
                 "$subtitle",
-                style: TextStyle(color: Colors.grey[600], fontSize: 10),
+                style: const TextStyle(
+                  color: AppColors.black50,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 10,
+                ),
               ),
             ],
           )
@@ -56,7 +61,7 @@ class CustomTitleWithoutSubWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(top: 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +82,7 @@ class CustomTitleWithoutSubWidget extends StatelessWidget {
               Text(
                 "$title",
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   fontSize: 12,
                 ),
               ),
