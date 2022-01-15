@@ -3,6 +3,8 @@ import 'package:assivito/src/frontend/widgets/custom_title_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'offer_list_screen.dart';
+
 class SearchScreen extends StatelessWidget {
   const SearchScreen({Key? key}) : super(key: key);
 
@@ -219,57 +221,63 @@ class SearchOfferWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 7.5),
-      child: Card(
-        elevation: 4,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 130,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                image: const DecorationImage(
-                  image: AssetImage("assets/images/img1.png"),
-                  fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Get.to(const OfferListScreen());
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 7.5),
+        child: Card(
+          elevation: 4,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 130,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: const DecorationImage(
+                    image: AssetImage("assets/images/img1.png"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Tomates grappe",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "Tomates grappe",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      OfferListWithIcon(title: "18 offres"),
-                      OfferListWithIcon(title: "àpd. 1500 XOF/kg"),
-                      OfferListWithIcon(title: "10 fournisseurs"),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                ],
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        OfferListWithIcon(title: "18 offres"),
+                        OfferListWithIcon(title: "àpd. 1500 XOF/kg"),
+                        OfferListWithIcon(title: "10 fournisseurs"),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,4 @@
-package com.example.assivito
+package com.assivito.heliumtech
 
 import io.flutter.embedding.android.FlutterActivity
 

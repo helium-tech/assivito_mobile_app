@@ -1,10 +1,13 @@
+import 'package:assivito/src/frontend/screens/offer_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 import 'search_screen.dart';
 import 'favorite_screen.dart';
 import 'cart_screen.dart';
 import 'account_screen.dart';
+import 'marchand_detail_screen.dart';
 
 import '../themes/colors.dart';
 import '../widgets/custom_title_widget.dart';
@@ -29,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const SearchScreen(),
     const CartScreen(),
     const FavoriteScreen(),
-    const AccountScreen(),
+    AccountScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -270,47 +273,52 @@ class OfferWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 10,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: SizedBox(
-        width: 150,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 135,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: const DecorationImage(
-                  image: AssetImage("assets/images/img1.png"),
-                  fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Get.to(OfferListScreen());
+      },
+      child: Card(
+        elevation: 10,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        child: SizedBox(
+          width: 150,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 135,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: const DecorationImage(
+                    image: AssetImage("assets/images/img1.png"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Text(
-                "Tomate grappe",
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 12,
+              const SizedBox(
+                height: 10,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Text(
+                  "Tomate grappe",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            const OfferListWithIcon(title: "18 offres"),
-            const OfferListWithIcon(title: "àpd. 1500 XOF/kg"),
-            const OfferListWithIcon(title: "10 fournisseurs"),
-            const SizedBox(
-              height: 15,
-            ),
-          ],
+              const SizedBox(
+                height: 5,
+              ),
+              const OfferListWithIcon(title: "18 offres"),
+              const OfferListWithIcon(title: "àpd. 1500 XOF/kg"),
+              const OfferListWithIcon(title: "10 fournisseurs"),
+              const SizedBox(
+                height: 15,
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import 'register_screen.dart';
 import '../themes/colors.dart';
+import 'package:assivito/src/backend/controllers/auth_controller.dart';
 
 import '../widgets/text_form_field_widget.dart';
 
@@ -13,6 +14,10 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
+  final AuthController authController = Get.put(AuthController());
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -65,24 +70,53 @@ class LoginScreen extends StatelessWidget {
                     Container(
                       // color: Colors.red,
                       padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: const TextFormFieldWidget(
-                        hintText: "Email ou n° de téléphone",
-                      ),
+                      child: Obx(() {
+                        return TextFormFieldWidget(
+                          hintText: "Email ou n° de téléphone",
+                          controller: emailController,
+                          errorText: authController.emailError.value.isEmpty
+                              ? null
+                              : authController.emailError.value,
+                          validator: (value) {
+                            String val = value ?? "";
+                            if (val.trim().isEmail == false) {
+                              return "Adresse Email incorrect";
+                            } else {
+                              return null;
+                            }
+                          },
+                        );
+                      }),
                     ),
                     const SizedBox(
                       height: 30,
                     ),
-                    const TextFormFieldWidget(
-                      hintText: "Mot de passe",
-                      suffixIcon: Padding(
-                        padding: EdgeInsets.only(bottom: 0),
-                        child: Icon(
-                          FontAwesomeIcons.eyeSlash,
-                          size: 18,
-                          color: Colors.black,
+                    Obx(() {
+                      return TextFormFieldWidget(
+                        hintText: "Mot de passe",
+                        errorText: authController.passwordError.value.isEmpty
+                            ? null
+                            : authController.passwordError.value,
+                        obscureText: true,
+                        validator: (value) {
+                          String val = value ?? "";
+                          if (val.length < 8) {
+                            return "Mot de passe trop court";
+                          } else {
+                            return null;
+                          }
+                        },
+                        controller: passwordController,
+                        suffixIcon: const Padding(
+                          padding: EdgeInsets.only(bottom: 0),
+                          child: Icon(
+                            FontAwesomeIcons.eyeSlash,
+                            size: 18,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    }),
                     const SizedBox(
                       height: 10,
                     ),
@@ -106,7 +140,15 @@ class LoginScreen extends StatelessWidget {
                         primary: AppColors.yellowColor,
                         elevation: 0,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        bool valid = _formKey.currentState!.validate();
+                        if (valid) {
+                          authController.login(
+                            emailController.text.trim(),
+                            passwordController.text,
+                          );
+                        }
+                      },
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 0),
                         child: const Text(

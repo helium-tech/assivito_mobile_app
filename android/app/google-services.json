@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "583735446464",
+    "project_id": "assivito-tg",
+    "storage_bucket": "assivito-tg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583735446464:android:8f8c25719c0c4b6196d625",
+        "android_client_info": {
+          "package_name": "com.assivito.heliumtech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583735446464-ll6s904199g24kbtfcqruubupu931d4p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAqDrVEbFgJPbgqcgc8Uzs9_4Dad7sw30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583735446464-ll6s904199g24kbtfcqruubupu931d4p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

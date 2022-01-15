@@ -11,8 +11,14 @@ import 'src/frontend/screens/login_screen.dart';
 // import 'src/frontend/screens/onboarding_screen.dart';
 
 import 'src/frontend/themes/app_themes.dart';
+import 'src/backend/controllers/auth_controller.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  firebaseInitialization.then((value) {
+    Get.put(AuthController());
+  });
+
   runApp(const MyApp());
 }
 
@@ -27,7 +33,9 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
       darkTheme: AppTheme.darkTheme,
-      home: LoginScreen(),
+      home: const Center(
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 }

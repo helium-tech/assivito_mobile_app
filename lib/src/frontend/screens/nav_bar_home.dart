@@ -4,26 +4,36 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/widgets.dart';
 
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'search_screen.dart';
+import 'favorite_screen.dart';
+import 'cart_screen.dart';
+import 'account_screen.dart';
+import 'home_screen.dart';
 
 //import 'package:flat_icons_flutter/flat_icons_flutter.dart';
 
 List<Widget> bottomNavBarItemsView = [
-  Container(),
-  Container(),
-  Container(),
+  const HomeViewWidget(),
+  const SearchScreen(),
+  const CartScreen(),
+  const FavoriteScreen(),
+  AccountScreen(),
 ];
 //
 
-List<String> bottomNavBarIconList = const [
-  "assets/icons/home.svg",
-  "assets/icons/protect-c.svg",
-  "assets/icons/user-profile.svg",
+List bottomNavBarIconList = const [
+  Icons.home,
+  Icons.search,
+  Icons.card_travel,
+  Icons.health_and_safety_sharp,
+  Icons.person,
 ];
 
 List<String> bottomNavBarIconNameList = const [
   "Accueil",
   "Protéger",
+  "Compte",
+  "Compte",
   "Compte",
 ];
 
@@ -86,7 +96,7 @@ class CustomBottomNavigationBar extends StatefulWidget {
 
   final ValueChanged<int> onChanged;
 
-  final List<String> iconList;
+  final List iconList;
 
   final List<String> iconNameList;
 
@@ -106,14 +116,12 @@ class CustomBottomNavigationBar extends StatefulWidget {
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   late int _selectedIndex;
 
-  late List<String> _iconList;
+  late List _iconList;
 
   late List<String> _iconNameList;
 
   @override
   void initState() {
-    // TODO: implement initState
-
     super.initState();
 
     _selectedIndex = widget.defaultSelectedIndex;
@@ -140,7 +148,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     );
   }
 
-  Widget buildNavBarItem(String icon, String name, int index) {
+  Widget buildNavBarItem(IconData icon, String name, int index) {
     return GestureDetector(
       onTap: () {
         widget.onChanged(index);
@@ -150,8 +158,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         });
       },
       child: Container(
-          height: 60,
-          color: Colors.red,
+          height: 50,
+          color: Colors.white,
           width: MediaQuery.of(context).size.width / _iconList.length,
           alignment: Alignment.center,
           child: FractionallySizedBox(
@@ -177,8 +185,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     margin: const EdgeInsets.only(top: 5),
 
                     child: Icon(
-                      FontAwesomeIcons.home,
-                      size: 32,
+                      icon,
+                      size: 25,
                       color:
                           index == _selectedIndex ? Colors.white : Colors.black,
                     ),

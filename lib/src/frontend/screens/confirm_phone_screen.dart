@@ -2,6 +2,8 @@ import 'package:assivito/src/frontend/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'nav_bar_home.dart';
+
 class ConfirmPhoneScreen extends StatelessWidget {
   const ConfirmPhoneScreen({Key? key}) : super(key: key);
 
@@ -75,7 +77,7 @@ class ConfirmPhoneScreen extends StatelessWidget {
                   elevation: 0,
                 ),
                 onPressed: () {
-                  Get.offAll(() => const HomeScreen());
+                  Get.offAll(() => const AppView());
                   // showValidatePhoneDialog();
                 },
                 child: Container(
