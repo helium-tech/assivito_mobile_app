@@ -11,6 +11,7 @@ class FavoriteScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
+        title: const Text('FAVORIS'),
       ),
       body: SingleChildScrollView(
         child: Padding(

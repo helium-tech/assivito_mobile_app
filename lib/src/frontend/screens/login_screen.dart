@@ -41,13 +41,11 @@ class LoginScreen extends StatelessWidget {
               width: 100,
               decoration: const BoxDecoration(
                 color: Colors.black,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              child: const Center(
-                child: Text(
-                  "LOGO",
-                  style: TextStyle(color: Colors.white),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage("assets/icons/icon.png"),
                 ),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
             ),
             const SizedBox(
@@ -151,14 +149,26 @@ class LoginScreen extends StatelessWidget {
                       },
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 0),
-                        child: const Text(
-                          "SE CONNECTER",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                        child: Obx(() {
+                          if (authController.loading.isTrue) {
+                            return const SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.black,
+                              ),
+                            );
+                          } else {
+                            return const Text(
+                              "SE CONNECTER",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            );
+                          }
+                        }),
                       ),
                     ),
                     const SizedBox(

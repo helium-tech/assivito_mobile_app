@@ -17,6 +17,9 @@ class RegisterScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController restaurantNameController =
+      TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -43,13 +46,11 @@ class RegisterScreen extends StatelessWidget {
                 width: 100,
                 decoration: const BoxDecoration(
                   color: Colors.black,
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
-                child: const Center(
-                  child: Text(
-                    "LOGO",
-                    style: TextStyle(color: Colors.white),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/icons/icon.png"),
                   ),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
               ),
               const SizedBox(
@@ -70,6 +71,7 @@ class RegisterScreen extends StatelessWidget {
                       const SizedBox(height: 30),
                       TextFormFieldWidget(
                         hintText: "Nom de votre restaurant",
+                        controller: restaurantNameController,
                         validator: (value) {
                           if (value!.length < 3) {
                             return "Nom de restaurant trop court";
@@ -93,6 +95,7 @@ class RegisterScreen extends StatelessWidget {
                       const SizedBox(height: 30),
                       TextFormFieldWidget(
                         hintText: "Votre n° de téléphone",
+                        controller: phoneNumberController,
                         validator: (value) {
                           if (value!.length < 8) {
                             return "Numéro de téléphone incorrect";
@@ -102,17 +105,22 @@ class RegisterScreen extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 30),
-                      TextFormFieldWidget(
-                        hintText: "Votre email",
-                        controller: emailController,
-                        validator: (value) {
-                          if (!value!.trim().isEmail) {
-                            return "Votre email est invalide";
-                          } else {
-                            return null;
-                          }
-                        },
-                      ),
+                      Obx(() {
+                        return TextFormFieldWidget(
+                          hintText: "Votre email",
+                          errorText: authController.emailError.value.isEmpty
+                              ? null
+                              : authController.emailError.value,
+                          controller: emailController,
+                          validator: (value) {
+                            if (!value!.trim().isEmail) {
+                              return "Votre email est invalide";
+                            } else {
+                              return null;
+                            }
+                          },
+                        );
+                      }),
                       const SizedBox(height: 30),
                       TextFormFieldWidget(
                         hintText: "Mot de passe",
@@ -160,20 +168,34 @@ class RegisterScreen extends StatelessWidget {
                               emailController.text.trim(),
                               passwordController.text,
                               displayName: fullNameController.text,
+                              phoneNumber: phoneNumberController.text.trim(),
+                              restaurantName:
+                                  restaurantNameController.text.trim(),
                             );
                           }
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 0),
-                          child: const Text(
-                            "S'INSCRIRE",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
+                            padding: const EdgeInsets.symmetric(horizontal: 0),
+                            child: Obx(() {
+                              if (authController.loading.isTrue) {
+                                return const SizedBox(
+                                  height: 20,
+                                  width: 20,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.black,
+                                  ),
+                                );
+                              } else {
+                                return const Text(
+                                  "S'INSCRIRE",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 12,
+                                  ),
+                                );
+                              }
+                            })),
                       ),
                       const SizedBox(
                         height: 15,
